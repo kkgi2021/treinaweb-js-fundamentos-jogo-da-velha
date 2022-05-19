@@ -1,5 +1,6 @@
 import "./styles.css";
 
+let nunber;
 let jogo = {
   iniciarNovoJogo() {
     jogo = {
@@ -18,19 +19,55 @@ let jogo = {
     -----
     ${jogo.campo[0]}|${jogo.campo[1]}|${jogo.campo[2]}
     
-    `)
-  },    
-    trocarJogador(){jogo.jogadorAtual=jogo.jogadorAtual === 'x' ? '0' : 'x';},
-      fazerJogada(posicao){ if(posicao>0 && posicao<10 && typeof jogo.campo[posicao-1]){ 
-        === number; jogo.compo[posicao-1]= jogo.jogadorAtual;
-        jogo.turno++;
-        return true;
-      }
-      return false; 
+    `);
+  },
+  trocarJogador() {
+    jogo.jogadorAtual = jogo.jogadorAtual === "x" ? "0" : "x";
+  },
+  fazerJogada(posicao) {
+    if (
+      posicao > 0 &&
+      posicao < 10 &&
+      typeof jogo.campo[posicao - 1] === nunber
+    ) {
+      jogo.campo[posicao - 1] = jogo.jogadorAtual;
+      jogo.turno++;
+      return true;
     }
-    verificarGanhador(){
-
+    return false;
+  },
+  comparar: (a, b, c) =>
+    jogo.campo[a] === jogo.campo[b] && jogo.campo[a] === jogo.campo[c],
+  verificarGanhador() {
+    return (
+      jogo.comparar(0, 1, 2) ||
+        jogo.comparar(3, 4, 5) ||
+        jogo.comparar(6, 7, 8),
+      jogo.comparar(0, 3, 6) ||
+        jogo.comparar(1, 4, 7) ||
+        jogo.comparar(2, 5, 8),
+      jogo.comparar(0, 4, 8) || jogo.comparar(2, 4, 6)
+    );
+  },
+  verificarFimDeJogo() {
+    const temGanhador = jogo.verificarFimDeJogo();
+    if (temGanhador) {
+      console.clear();
+      jogo.imprimir();
+      console.log(`O ganhador é ${jogo.jogadorAtual}`);
+      return true;
+    } else if (jogo.turno >= 9) {
+      console.clear();
+      jogo.imprimir();
+      console.log("Deu velha");
+      return true;
     }
+    return false;
   }
-jogo.iniciarNovoJogo();
-jogo.imprimir();
+};
+function iniciar() {
+  jogo.iniciarNovoJogo();
+  while (!jogo.jogoFinalizado) {
+    console.clear;
+  }
+}
