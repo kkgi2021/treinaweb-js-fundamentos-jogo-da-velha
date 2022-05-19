@@ -18,8 +18,19 @@ let jogo = {
     -----
     ${jogo.campo[0]}|${jogo.campo[1]}|${jogo.campo[2]}
     
-    `);
+    `)
+  },    
+    trocarJogador(){jogo.jogadorAtual=jogo.jogadorAtual === 'x' ? '0' : 'x';},
+      fazerJogada(posicao){ if(posicao>0 && posicao<10 && typeof jogo.campo[posicao-1]){ 
+        === number; jogo.compo[posicao-1]= jogo.jogadorAtual;
+        jogo.turno++;
+        return true;
+      }
+      return false; 
+    }
+    verificarGanhador(){
+
+    }
   }
-};
 jogo.iniciarNovoJogo();
 jogo.imprimir();
