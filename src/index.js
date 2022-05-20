@@ -72,7 +72,7 @@ function iniciar() {
     console.clear();
     jogo.imprimir();
     console.log(`jogador Atual: ${jogo.jogadorAtual}`);
-    const posicao = parseInt(prompt("posição: "));
+    const posicao = parseInt(prompt("posição:  "));
     if (!posicao) {
       break;
     }
