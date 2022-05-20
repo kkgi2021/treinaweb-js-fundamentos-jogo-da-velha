@@ -54,7 +54,6 @@ let jogo = {
       console.clear();
       jogo.imprimir();
       jogo.trocarJogador();
-      5;
       console.log(`O ganhador é ${jogo.jogadorAtual}`);
       return true;
     } else if (jogo.turno >= 9) {
