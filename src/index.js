@@ -1,5 +1,4 @@
 import "./styles.css";
-
 let nunber;
 let jogo = {
   iniciarNovoJogo() {
@@ -50,10 +49,12 @@ let jogo = {
     );
   },
   verificarFimDeJogo() {
-    const temGanhador = jogo.verificarFimDeJogo();
+    const temGanhador = jogo.verificarGanhador();
     if (temGanhador) {
       console.clear();
       jogo.imprimir();
+      jogo.trocarJogador();
+      5;
       console.log(`O ganhador é ${jogo.jogadorAtual}`);
       return true;
     } else if (jogo.turno >= 9) {
@@ -68,6 +69,17 @@ let jogo = {
 function iniciar() {
   jogo.iniciarNovoJogo();
   while (!jogo.jogoFinalizado) {
-    console.clear;
+    console.clear();
+    jogo.imprimir();
+    console.log(`jogador Atual: ${jogo.jogadorAtual}`);
+    const posicao = parseInt(prompt("posição: "));
+    if (!posicao) {
+      break;
+    }
+    if (jogo.fazerJogada(posicao)) {
+      jogo.trocarJogador();
+    }
+    jogo.jogoFinalizado = jogo.verificarFimDeJogo();
   }
 }
+iniciar();
